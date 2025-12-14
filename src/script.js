@@ -9,6 +9,8 @@ const keyEmogi = document.querySelector(".key-emoji");
 const nextButton = document.querySelector(".btn-next")
 const previousBTN = document.querySelector(".btn-previous")
 const pista1 = document.getElementById("pista1")
+const keycode = document.getElementById("keycode")
+const keygeneratezone = document.getElementById("keygenzone")
 
 
 let current = 0;
@@ -17,6 +19,7 @@ let siteOn = false;
 let isFirstLoad = true;
 let clickCount = 0;
 const maxClicks = 3;
+let terminalCode = null
 
 let isPannelComplete = [false, true, false, false];
 
@@ -26,6 +29,10 @@ function goToSection(index) {
 
   if (index > 0 && !isPannelComplete[index - 1]) return;
   isAnimating = true;
+
+
+
+
 
   gsap.to(window, {
     duration: 1,
@@ -42,8 +49,18 @@ function goToSection(index) {
     }
   });
 
-  
+
 }
+
+function generateCode() {
+
+
+  terminalCode = Math.floor(Math.random() * 99999)
+  console.log(terminalCode)
+}
+
+generateCode()
+
 
 window.addEventListener("wheel", (e) => {
   if (e.deltaY > 0) {
@@ -146,7 +163,7 @@ keyEmogi.addEventListener("click", () => {
     onComplete: () => {
       isPannelComplete[0] = true;
       keyEmogi.style.display = "none";
-       alert("has conseguido la llave")
+      alert("has conseguido la llave")
 
       updateNavButtons()
     }
@@ -162,9 +179,9 @@ nextButton.addEventListener("click", () => {
 });
 
 previousBTN.addEventListener("click", () => {
- 
-    goToSection(current - 1);
-  
+
+  goToSection(current - 1);
+
 });
 
 function updateNavButtons() {
@@ -172,7 +189,7 @@ function updateNavButtons() {
   if (current === 0) {
     previousBTN.style.display = "none";
   } else {
-    previousBTN.style.display = ""; 
+    previousBTN.style.display = "";
   }
 
 
@@ -181,7 +198,39 @@ function updateNavButtons() {
   if (current > 0) previousBTN.disabled = false;
 }
 
-  updateNavButtons()
-  pista1.addEventListener("click", () =>{
-    alert("Da 3 clicks a la imagen")
-  })
+updateNavButtons()
+pista1.addEventListener("click", () => {
+  alert("Da 3 clicks a la imagen")
+})
+
+keycode.addEventListener("input", () => {
+  const code = keycode.value;
+
+  console.log(code)
+  if (code == terminalCode) {
+    generateKey();
+
+  }
+});
+
+function generateKey() {
+  keygeneratezone.innerHTML = "🗝️";
+keygeneratezone.style.position = "absolute";
+
+
+  const keySize = Math.min(window.innerWidth, window.innerHeight) * 0.5;
+
+  gsap.to(keygeneratezone, {
+    fontSize: keySize,
+    rotation: 700,
+    duration: 1.25,
+    ease: "power2.inOut",
+    onComplete: () => {
+      isPannelComplete[2] = true;
+      keygeneratezone.style.display = "none";
+      alert("has conseguido la llave");
+      updateNavButtons();
+    }
+  });
+}
+

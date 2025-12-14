@@ -101,7 +101,7 @@ body.on .bulb {
 .panel.intro img#myImage {
   width: 200px;
   height: auto;
-  border-radius: 50%; 
+  border-radius: 25%; 
   margin: 1rem 0;
   cursor: pointer;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
@@ -212,77 +212,77 @@ body.on .bulb {
   object-fit: cover;
   display: block;
 }
-
 .works {
-  padding: 4rem 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  box-sizing: border-box;
+    min-height: 100vh;
+    width: 100%;
+    padding: 6rem 2rem;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+
+}
+
+.works p:first-child {
+    font-size: 1rem;
+    color: #007bff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: -1rem;
 }
 
 .works h1 {
-  margin: 0;
-  font-size: 1.5rem;
-  color: #222;
-  text-align: center;
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-top: 0;
 }
 
-.works-grid {
-  width: 100%;
-  max-width: 1100px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.25rem;
+
+
+.works p {
+    max-width: 700px;
+    text-align: center;
+    line-height: 1.7;
+    font-size: 1.1rem;
+    color: #34495e;
 }
 
-.work-card {
-  background: #fff;
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  min-height: 220px;
+.works h1:nth-of-type(2) {
+    font-size: 1.5rem;
+    margin-top: 1rem;
 }
 
-.work-card img {
-  width: 100%;
-  height:140px;
-  object-fit: cover;
-  border-radius: 8px;
+.works h1 a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s ease-in-out;
 }
 
-.work-card h3 {
-  margin: 0;
-  font-size: 1.05rem;
-  color: #222;
+.works h1 a:hover {
+    color: #0056b3;
+    text-decoration: underline;
 }
 
-.work-card p {
-  margin: 0;
-  color: #444;
-  font-size: 0.95rem;
-  flex: 1 1 auto;
+.works img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease-in-out;
 }
 
-.work-card a {
-  margin-top: 0.5rem;
-  text-decoration: none;
-  background: #007bff;
-  color: #fff;
-  padding: 0.5rem 0.75rem;
-  border-radius: 8px;
-  font-weight: 600;
-  display: inline-block;
-}
-
-.work-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+.works img:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 600px) {

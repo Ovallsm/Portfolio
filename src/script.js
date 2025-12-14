@@ -142,7 +142,7 @@ keyEmogi.addEventListener("click", () => {
 
   if (clickCount < maxClicks) return;
   gsap.to(keyEmogi, {
-    fontSize: keySize, duration: 1.0,
+    fontSize: keySize, duration: 0.75,
     onComplete: () => {
       isPannelComplete[0] = true;
       keyEmogi.style.display = "none";
